@@ -1,0 +1,62 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Categorias</title>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Send an AJAX request
+            $.getJSON("api/expensecategories/",
+            function (data) {
+                // On success, 'data' contains a list of products.
+                $.each(data, function (key, val) {
+
+                    // Format the text to display.
+                    var str = 'Nome: ' + val.Name + ', Descrição: ' + val.Description;
+
+                    // Add a list item for the product.
+                    $('<li/>', { text: str })
+                    .appendTo($('#categorias'));
+                });
+            });
+        });
+
+        function save() {
+            $.post("api/expensecategories", { Name: $('#txtNome').val(), Description: $('#txtDescricao').val() })
+                .done(function (data) {
+                    alert("Categoria salva com sucesso!");
+                });
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>Nome: </td>
+                <td>
+                    <input type="text" id="txtNome" /></td>
+            </tr>
+            <tr>
+                <td>Descrição: </td>
+                <td>
+                    <input type="text" aria-multiline="true" id="txtDescricao" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" id="btnSalvar" onclick="save();" /></td>
+            </tr>
+        </table>
+        <div>
+            <h1>Todas as categorias</h1>
+            <ul id="categorias" />
+        </div>
+    </div>
+</body>
+</html>
