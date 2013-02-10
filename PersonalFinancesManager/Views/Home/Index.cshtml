@@ -1,62 +1,45 @@
 ﻿@{
-    Layout = null;
+    ViewBag.Title = "Home Page";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Categorias</title>
-    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Send an AJAX request
-            $.getJSON("api/expensecategories/",
-            function (data) {
-                // On success, 'data' contains a list of products.
-                $.each(data, function (key, val) {
-
-                    // Format the text to display.
-                    var str = 'Nome: ' + val.Name + ', Descrição: ' + val.Description;
-
-                    // Add a list item for the product.
-                    $('<li/>', { text: str })
-                    .appendTo($('#categorias'));
-                });
-            });
-        });
-
-        function save() {
-            $.post("api/expensecategories", { Name: $('#txtNome').val(), Description: $('#txtDescricao').val() })
-                .done(function (data) {
-                    alert("Categoria salva com sucesso!");
-                });
-        }
-    </script>
-</head>
-<body>
-    <div>
-        <table>
-            <tr>
-                <td>Nome: </td>
-                <td>
-                    <input type="text" id="txtNome" /></td>
-            </tr>
-            <tr>
-                <td>Descrição: </td>
-                <td>
-                    <input type="text" aria-multiline="true" id="txtDescricao" /></td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="button" id="btnSalvar" value="Salvar" onclick="save();" /></td>
-            </tr>
-        </table>
-        <div>
-            <h1>Todas as categorias</h1>
-            <ul id="categorias" />
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                Para saber mais sobre o ASP.NET MVC, acesse
+                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+                A página contém <mark>vídeos, tutoriais e amostras</mark> para ajudá-lo a usar o ASP.NET MVC da melhor maneira possível.
+                Se você tiver dúvidas sobre o ASP.NET MVC, acesse
+                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">nossos fóruns</a>.
+            </p>
         </div>
-    </div>
-</body>
-</html>
+    </section>
+}
+<h3>Sugerimos o seguinte:</h3>
+<ol class="round">
+    <li class="one">
+        <h5>Introdução</h5>
+        O ASP.NET MVC oferece um modo avançado, com base em modelos, de compilar sites dinâmicos que
+            ajudam a separar de forma clara as diferentes preocupações e que oferece controle total sobre marcações
+            a fim de possibilitar um desenvolvimento ágil e prazeroso. O ASP.NET MVC inclui vários recursos que permitem um desenvolvimento
+            rápido e compatível com TDD para a criação de aplicativos sofisticados que usam
+            os padrões da Web mais recentes.
+            <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Saiba mais…</a>
+    </li>
+
+    <li class="two">
+        <h5>Adicione pacotes NuGet e inicie rapidamente sua codificação</h5>
+        O NuGet facilita a instalação e a atualização de bibliotecas e ferramentas gratuitas.
+            <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Saiba mais…</a>
+    </li>
+
+    <li class="three">
+        <h5>Encontrar hospedagem Web</h5>
+        Você pode encontrar facilmente uma empresa de hospedagem na Web que ofereça a combinação certa de recursos
+            e preço para seus aplicativos.
+            <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Saiba mais…</a>
+    </li>
+</ol>

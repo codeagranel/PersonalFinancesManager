@@ -1,16 +1,46 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
+    <title>@ViewBag.Title - Meu aplicativo ASP.NET MVC</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @RenderBody()
-
-    @Scripts.Render("~/bundles/jquery")
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">@Html.ActionLink("seu logo aqui", "Index", "Home")</p>
+            </div>
+            <div class="float-right">
+                <nav>
+                    <ul id="menu">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Expenses", "Index", "Expenses")</li>
+                        <li>@Html.ActionLink("Categories", "Index", "ExpenseCategories")</li>
+                        <li>@Html.ActionLink("Methods of payment", "Index", "MethodsOfPayment")</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - Meu aplicativo ASP.NET MVC</p>
+            </div>
+        </div>
+    </footer>
     @RenderSection("scripts", required: false)
 </body>
 </html>

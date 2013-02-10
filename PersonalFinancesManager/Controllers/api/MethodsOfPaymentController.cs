@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace PersonalFinancesManager.Controllers
+namespace PersonalFinancesManager.Controllers.Api
 {
     public class MethodsOfPaymentController : ApiController
     {
