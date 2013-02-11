@@ -1,4 +1,7 @@
-﻿using PersonalFinancesManager.Models;
+﻿using PersonalFinancesManager.Controllers.api.Interfaces;
+using PersonalFinancesManager.Models;
+using PersonalFinancesManager.Repositories;
+using PersonalFinancesManager.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,28 +11,25 @@ using System.Web.Http;
 
 namespace PersonalFinancesManager.Controllers.Api
 {
-    public class MethodsOfPaymentController : ApiController
+    public class MethodsOfPaymentController : ApiController, IApiController<MethodOfPayment>
     {
-        MainContext Context = new MainContext();
+        //DI não funcionou com webApi. Ele tem que usar um construtor padrão
+        //TODO: Procurar um workaround melhor
+        IMethodsOfPayment MethodsOfPayment = new MethodsOfPayment();
 
-        public MethodsOfPaymentController()
+        public IEnumerable<MethodOfPayment> GetAll()
         {
+            return MethodsOfPayment.GetAll();
         }
 
-        public IEnumerable<MethodOfPayment> GetAllExpenses()
+        public MethodOfPayment Get(int id)
         {
-            return Context.MethodsOfPayment.AsEnumerable();
+            return MethodsOfPayment.Get(id);
         }
 
-        public MethodOfPayment GetExpense(int id)
+        public HttpResponseMessage Post(MethodOfPayment item)
         {
-            return Context.MethodsOfPayment.FirstOrDefault(x => x.Id.Equals(id));
-        }
-
-        public HttpResponseMessage PostExpense(MethodOfPayment item)
-        {
-            item = Context.MethodsOfPayment.Add(item);
-            Context.SaveChanges();
+            MethodsOfPayment.Create(item);
             var response = Request.CreateResponse<MethodOfPayment>(HttpStatusCode.Created, item);
 
             string uri = Url.Link("DefaultApi", new { id = item.Id });
@@ -37,29 +37,28 @@ namespace PersonalFinancesManager.Controllers.Api
             return response;
         }
 
-        public void PutExpense(int id, MethodOfPayment item)
+        public void Put(int id, MethodOfPayment item)
         {
-            var methodOfPayment = Context.MethodsOfPayment.FirstOrDefault(x => x.Id.Equals(id));
-            if (item == null)
+            try
+            {
+                MethodsOfPayment.Update(id, item);
+            }
+            catch (InvalidOperationException)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-
-            methodOfPayment.Name = item.Name;
-            methodOfPayment.Description = item.Description;
-
-            Context.SaveChanges();
         }
 
-        public void DeleteExpense(int id)
+        public void Delete(int id)
         {
-            MethodOfPayment item = Context.MethodsOfPayment.FirstOrDefault(x => x.Id.Equals(id));
-            if (item == null)
+            try
+            {
+                MethodsOfPayment.Delete(id);
+            }
+            catch (InvalidOperationException)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-
-            Context.MethodsOfPayment.Remove(item);
         }
     }
 }

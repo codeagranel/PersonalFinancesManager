@@ -1,4 +1,7 @@
-﻿using PersonalFinancesManager.Models;
+﻿using PersonalFinancesManager.Controllers.api.Interfaces;
+using PersonalFinancesManager.Models;
+using PersonalFinancesManager.Repositories;
+using PersonalFinancesManager.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,33 +11,25 @@ using System.Web.Http;
 
 namespace PersonalFinancesManager.Controllers.Api
 {
-    public class ExpensesController : ApiController
+    public class ExpensesController : ApiController, IApiController<Expense>
     {
-        MainContext Context = new MainContext();
+        //DI não funcionou com webApi. Ele tem que usar um construtor padrão
+        //TODO: Procurar um workaround melhor
+        IExpenses Expenses = new Expenses();
 
-        public ExpensesController()
+        public IEnumerable<Expense> GetAll()
         {
+            return Expenses.GetAll();
         }
 
-        public IEnumerable<Expense> GetAllExpenses()
+        public Expense Get(int id)
         {
-            return Context.Expenses.AsEnumerable();
+            return Expenses.Get(id); ;
         }
 
-        public Expense GetExpense(int id)
+        public HttpResponseMessage Post(Expense item)
         {
-            return Context.Expenses.FirstOrDefault(x => x.Id.Equals(id));
-        }
-
-        public IEnumerable<Expense> GetExpensesByCategory(string category)
-        {
-            return Context.Expenses.Where(x => string.Equals(x.Category.Name, category, StringComparison.OrdinalIgnoreCase));
-        }
-
-        public HttpResponseMessage PostExpense(Expense item)
-        {
-            item = Context.Expenses.Add(item);
-            Context.SaveChanges();
+            Expenses.Create(item);
             var response = Request.CreateResponse<Expense>(HttpStatusCode.Created, item);
 
             string uri = Url.Link("DefaultApi", new { id = item.Id });
@@ -42,33 +37,28 @@ namespace PersonalFinancesManager.Controllers.Api
             return response;
         }
 
-        public void PutExpense(int id, Expense item)
+        public void Put(int id, Expense item)
         {
-            var expense = Context.Expenses.FirstOrDefault(x => x.Id.Equals(id));
-            if (item == null)
+            try
+            {
+                Expenses.Update(id, item);
+            }
+            catch (InvalidOperationException)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-
-            expense.Amount = item.Amount;
-            expense.Category = item.Category;
-            expense.Date = item.Date;
-            expense.MethodOfPayment = item.MethodOfPayment;
-            expense.Name = item.Name;
-            expense.Recurrent = item.Recurrent;
-
-            Context.SaveChanges();
         }
 
-        public void DeleteExpense(int id)
+        public void Delete(int id)
         {
-            Expense item = Context.Expenses.FirstOrDefault(x => x.Id.Equals(id));
-            if (item == null)
+            try
+            {
+                Expenses.Delete(id);
+            }
+            catch (InvalidOperationException)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-
-            Context.Expenses.Remove(item);
         }
     }
 }

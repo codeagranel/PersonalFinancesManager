@@ -2,18 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Expenses Manager</title>
+    <title>Gerenciador Financeiro Pessoal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    @*@Styles.Render("~/Content/css")*@
-    @*@Styles.Render("~/Content/bootstrap")*@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
-    @*@Scripts.Render("~/bundles/bootstrap")*@
 
-    <!-- Le styles -->
     <link href="~/Content/themes/base/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         body {
@@ -109,15 +105,15 @@
     <div class="container">
 
         <div class="masthead">
-            <h3 class="muted">@Html.ActionLink("seu logo aqui", "Index", "Home")</h3>
+            <h3 class="muted">@Html.ActionLink("Confisca Gado Studios", "Index", "Home")</h3>
             <div class="navbar">
                 <div class="navbar-inner">
                     <div class="container">
                         <ul class="nav">
-                            <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Expenses", "Index", "Expenses")</li>
-                            <li>@Html.ActionLink("Categories", "Index", "ExpenseCategories")</li>
-                            <li>@Html.ActionLink("Methods of payment", "Index", "MethodsOfPayment")</li>
+                            <li class="active">@Html.ActionLink("Início", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Despesas", "Index", "Expenses")</li>
+                            <li>@Html.ActionLink("Categorias", "Index", "ExpenseCategories")</li>
+                            <li>@Html.ActionLink("Formas de pagamento", "Index", "MethodsOfPayment")</li>
                         </ul>
                     </div>
                 </div>

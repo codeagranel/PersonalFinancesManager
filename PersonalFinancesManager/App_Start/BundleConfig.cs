@@ -11,12 +11,14 @@ namespace PersonalFinancesManager
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            //Não funciona?
             bundles.Add(new ScriptBundle("~/bundles/less").Include(
                         "~/Scripts/less-1.3.3.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
 
+            //Não funciona?
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.min.js"));
 
@@ -31,6 +33,7 @@ namespace PersonalFinancesManager
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
+            //Não funciona?
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
                         "~/Content/themes/base/bootstrap.min.css",
                         "~/Content/themes/base/bootstrap-responsive.min.css"));

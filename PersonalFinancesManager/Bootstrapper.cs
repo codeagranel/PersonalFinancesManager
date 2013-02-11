@@ -2,6 +2,8 @@ using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using Unity.Mvc3;
 using System.Web.Http;
+using PersonalFinancesManager.Repositories.Interfaces;
+using PersonalFinancesManager.Repositories;
 
 namespace PersonalFinancesManager
 {
@@ -18,10 +20,10 @@ namespace PersonalFinancesManager
         {
             var container = new UnityContainer();
 
-            // register all your components with the container here
-            // it is NOT necessary to register your controllers
-            
-            // e.g. container.RegisterType<ITestService, TestService>();            
+            //Registrem as classes injetáveis aqui
+            //Ex: container.RegisterType<ITestService, TestService>();            
+
+            container.RegisterType<ICategories, Categories>();
 
             GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(container);
 
