@@ -163,6 +163,10 @@
     <Compile Include="Repositories\MethodsOfPayment.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\PersonalFinancesManager.Models.MainContext.mdf" />
+    <Content Include="App_Data\PersonalFinancesManager.Models.MainContext_log.ldf">
+      <DependentUpon>PersonalFinancesManager.Models.MainContext.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\themes\base\bootstrap-responsive.css" />
     <Content Include="Content\themes\base\bootstrap-responsive.min.css" />
     <Content Include="Content\themes\base\bootstrap.css" />
@@ -272,9 +276,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\ExpenseCategories\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

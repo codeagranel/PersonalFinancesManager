@@ -9,7 +9,7 @@ namespace PersonalFinancesManager.Models
     public class MainContext : DbContext
     {
         public MainContext()
-            : base("name=DefaultConnection")
+            : base()
         {
 
         }
