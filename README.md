@@ -1,4 +1,4 @@
-PersonalFinancesManager
+Personal Finances Manager
 =======================
 
 Project of an application to help you keep track of your personal expenses.
