@@ -42,7 +42,7 @@ namespace PersonalFinancesManager.Repositories
             }
 
             expense.Amount = item.Amount;
-            expense.Category = item.Category;
+            expense.Categories = item.Categories;
             expense.Date = item.Date;
             expense.MethodOfPayment = item.MethodOfPayment;
             expense.Name = item.Name;

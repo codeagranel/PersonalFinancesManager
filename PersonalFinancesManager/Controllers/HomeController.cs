@@ -10,7 +10,7 @@ namespace PersonalFinancesManager.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "A aplicação para você sair do vermelho";
+            ViewBag.Message = "Suas finanças, de forma simples.";
 
             return View();
         }

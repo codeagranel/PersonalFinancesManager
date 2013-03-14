@@ -105,14 +105,14 @@
     <div class="container">
 
         <div class="masthead">
-            <h3 class="muted">@Html.ActionLink("Confisca Gado Studios", "Index", "Home")</h3>
+            <h3 class="muted">@Html.ActionLink("Gerenciador Financeiro Pessoal", "Index", "Home")</h3>
             <div class="navbar">
                 <div class="navbar-inner">
                     <div class="container">
                         <ul class="nav">
                             <li class="active">@Html.ActionLink("Início", "Index", "Home")</li>
                             <li>@Html.ActionLink("Despesas", "Index", "Expenses")</li>
-                            <li>@Html.ActionLink("Categorias", "Index", "ExpenseCategories")</li>
+                            <li>@Html.ActionLink("Categorias", "Index", "Categories")</li>
                             <li>@Html.ActionLink("Formas de pagamento", "Index", "MethodsOfPayment")</li>
                         </ul>
                     </div>
@@ -132,10 +132,11 @@
         <hr>
 
         <div class="footer">
-            <p>&copy; Confisca Gado Studios 2013</p>
+            <p>&copy; Code-A-Granel</p>
         </div>
 
     </div>
+    @RenderSection("Scripts", required: false)
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
