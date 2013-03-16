@@ -16,6 +16,7 @@ namespace PersonalFinancesManager.Controllers
         //
         // GET: /Categories/
 
+        [Authorize()]
         public ActionResult Index()
         {
             return View(db.ExpenseCategories.ToList());
