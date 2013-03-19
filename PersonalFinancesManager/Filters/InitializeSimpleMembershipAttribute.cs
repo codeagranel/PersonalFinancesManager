@@ -25,11 +25,11 @@ namespace PersonalFinancesManager.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<MainContext>(null);
 
                 try
                 {
-                    using (var context = new UsersContext())
+                    using (var context = new MainContext())
                     {
                         if (!context.Database.Exists())
                         {
