@@ -1,0 +1,27 @@
+﻿@model PersonalFinancesManager.Models.ExpenseCategory
+
+@{
+    ViewBag.Title = "ExpensesByCategory";
+}
+
+<h2>ExpensesByCategory</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Gráfico de despesas filtradas por categoria</legend>
+
+        <div class="editor-label">
+            <span>Categorias</span>
+        </div>
+        <div class="editor-field">
+            @*@Html.ListBoxFor(model => model.Name, )*@
+        </div>
+
+        <p>
+            <input type="submit" value="Gerar Gráfico" />
+        </p>
+    </fieldset>
+}

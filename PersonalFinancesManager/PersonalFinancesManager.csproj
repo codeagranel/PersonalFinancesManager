@@ -180,6 +180,7 @@
     <Compile Include="Controllers\api\ExpensesController.cs" />
     <Compile Include="Controllers\api\Interfaces\IApiController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ExpensesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\api\MethodsOfPaymentController.cs" />
@@ -345,6 +346,9 @@
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\ExpensesByDate.cshtml" />
+    <Content Include="Views\Dashboard\ExpensesByCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
