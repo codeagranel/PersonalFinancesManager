@@ -8,6 +8,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WebMatrix.WebData;
 
 namespace PersonalFinancesManager
 {
@@ -19,11 +20,18 @@ namespace PersonalFinancesManager
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
+            Database.SetInitializer<MainContext>(null);
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            WebSecurity.InitializeDatabaseConnection(
+                  connectionStringName: "DefaultConnection",
+                  userTableName: "UserProfile",
+                  userIdColumn: "UserID",
+                  userNameColumn: "UserName",
+                  autoCreateTables: true);
         }
     }
 }
