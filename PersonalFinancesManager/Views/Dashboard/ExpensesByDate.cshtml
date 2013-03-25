@@ -1,4 +1,32 @@
-﻿@{
+﻿<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+       google.load("visualization", "1", { packages: ["corechart"] });
+       //google.setOnLoadCallback(drawChart);
+       function drawChart() {
+    $.post('/Dashboard/DashboardExpensesByDate', {},
+   function (data) {
+       var tdata = new google.visualization.DataTable();
+ 
+       tdata.addColumn('string', 'Mes');
+       tdata.addColumn('number', 'Valor');
+       tdata.addColumn('number', 'Despesa');
+ 
+       for (var i = 0; i < data.length; i++) {
+    tdata.addRow([data[i].Mes, data[i].Valor, data[i].Despesa]);
+       }
+ 
+       var options = {
+           title: "Despesas, Gastos do período"
+       };
+ 
+       var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+       chart.draw(tdata, options);
+   });
+       }
+   </script>
+
+@{
     ViewBag.Title = "ExpensesByDate";
 }
 
@@ -25,8 +53,12 @@
             @Html.Editor("endDate")
         </div>
 
-        <p>
+        @*<p>
             <input type="submit" value="Gerar Gráfico" />
-        </p>
+        </p>*@
     </fieldset>
 }
+
+<input type="button" value="Click" onclick="drawChart('teste')"/>
+
+<div id="chart_div" style="width: 900px; height: 500px;"></div>

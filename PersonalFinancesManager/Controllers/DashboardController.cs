@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PersonalFinancesManager.Models;
 
 namespace PersonalFinancesManager.Controllers
 {
     public class DashboardController : Controller
     {
+        private MainContext db = new MainContext();
         //
         // GET: /Dashboard/
 
@@ -33,6 +35,15 @@ namespace PersonalFinancesManager.Controllers
         }
 
         //
+        // GET: /Dashboard/ExpensesByDate
+
+        public JsonResult DashboardExpensesByDate()
+        {
+            var expenses = db.Expenses.Select(ex => new {Despesa = ex.Name, Mes = ex.Date, Valor = ex.Amount});
+            return Json(expenses);
+        }
+
+        //
         // POST: /Dashboard/ExpensesByDate
 
         [HttpPost]
@@ -43,7 +54,7 @@ namespace PersonalFinancesManager.Controllers
                 // TODO: Add insert logic here
                 //Call to google chart's
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", collection["beginDate"]);
             }
             catch
             {
