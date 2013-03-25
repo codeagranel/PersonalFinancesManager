@@ -39,6 +39,8 @@ namespace PersonalFinancesManager.Controllers
 
         public JsonResult DashboardExpensesByDate()
         {
+            //To Do: Verificar se a depesa pode conter mais de uma categorias
+
             var expenses = db.Expenses.Select(ex => new {Despesa = ex.Name, Mes = ex.Date, Valor = ex.Amount});
             return Json(expenses);
         }
