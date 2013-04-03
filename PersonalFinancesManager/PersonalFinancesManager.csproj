@@ -306,9 +306,6 @@
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Dashboard\Index.cshtml" />
-    <Content Include="Views\Dashboard\ExpensesByDate.cshtml" />
-    <Content Include="Views\Dashboard\ExpensesByCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
