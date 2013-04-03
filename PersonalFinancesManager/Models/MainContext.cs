@@ -17,6 +17,5 @@ namespace PersonalFinancesManager.Models
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<ExpenseCategory> ExpenseCategories { get; set; }
         public DbSet<MethodOfPayment> MethodsOfPayment { get; set; }
-        public DbSet<UserProfile> UserProfiles { get; set; }
     }
 }
