@@ -114,6 +114,9 @@
                             <li>@Html.ActionLink("Despesas", "Index", "Expenses")</li>
                             <li>@Html.ActionLink("Categorias", "Index", "Categories")</li>
                             <li>@Html.ActionLink("Formas de pagamento", "Index", "MethodsOfPayment")</li>
+                            <li class="dropdown">
+                                @Html.Partial("_LoginPartial")
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -123,7 +126,7 @@
         <div class="jumbotron">
             @RenderSection("featured", required: false)
         </div>
-        
+
         <hr>
         @RenderBody()
         <div class="row-fluid">

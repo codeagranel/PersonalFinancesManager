@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Web
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalFinancesManager", "PersonalFinancesManager\PersonalFinancesManager.csproj", "{D326DE6C-42A5-4ABF-AAAC-4E575307BAEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalFinancesManager.Tests", "PersonalFinancesManager.Tests\PersonalFinancesManager.Tests.csproj", "{C4C2965C-0B17-4FCA-8AA3-F411D4EB4BCA}"

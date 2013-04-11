@@ -1,0 +1,22 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <text>
+    Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+        {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()"><i class="icon-off"></i>Log off</a>
+        }
+    </text>
+}
+else
+{
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <li><a tabindex="-1" id="loginLink" href="@Url.Action("Login", "Account", routeValues: null)"><i class="icon-lock"></i>Login</a></li>
+        @*<li><a tabindex="-1" id="registerLink" href="@Url.Action("Register", "Account", routeValues: null)"><i class="icon-user"></i>Register</a></li>*@
+    </ul>
+}
+
+
+
